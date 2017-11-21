@@ -63,6 +63,15 @@ app.put('/api/todos/:id', (req,res) => {
   res.send(tasks[req.params.id]);
 });
 
+// DELETE /todos
+app.delete('/api/todos/:id', (req,res) => {
+  // Filtering tasks by id
+  tasks = tasks.filter((task) => {
+    // Deleting task by params.id
+    return task.id !== parseInt(req.params.id)
+  })
+});
+
 // All other URLs will 404
 app.use(function (req, res, next) {
   res.status(404).send("Sorry, I can't find that!");
