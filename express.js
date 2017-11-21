@@ -56,6 +56,14 @@ app.post('/todos', function (req, res) {
   res.send(tasks);
 });
 
+// PUT /todos
+app.put('/api/todos/:id', (req,res) => {
+  req.body.id = req.params.id;
+  tasks[req.params.id] = req.body
+  res.send(tasks[req.params.id]);
+});
+
+// All other URLs will 404
 app.use(function (req, res, next) {
   res.status(404).send("Sorry, I can't find that!");
 });
