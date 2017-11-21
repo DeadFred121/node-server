@@ -58,7 +58,7 @@ app.post('/todos', function (req, res) {
 
 // PUT /todos
 app.put('/api/todos/:id', (req,res) => {
-  req.body.id = req.params.id;
+  req.body.id = parseInt(req.params.id);
   tasks[req.params.id] = req.body
   res.send(tasks[req.params.id]);
 });
